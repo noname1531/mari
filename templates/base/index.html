@@ -1,0 +1,259 @@
+{% extends "include/homepage.html" %}
+{% load static %}
+{% block content %}
+
+<body>
+    <!-- Preloader -->
+    <div class="preloader-bg"></div>
+    <div id="preloader">
+        <div id="preloader-status">
+            <div class="preloader-position loader"> <span></span> </div>
+        </div>
+    </div>
+    <!-- Progress scroll totop -->
+    <div class="progress-wrap cursor-pointer">
+        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />}
+        </svg>
+    </div>
+    <!-- Navbar -->
+   
+    <!-- Slider -->
+    {% include "include/header.html" %}
+    <header class="header slider-fade">
+        <div class="owl-carousel owl-theme">
+            <!-- The opacity on the image is made with "data-overlay-dark="number". You can change it using the numbers 0-9. -->
+            {% for slide in slide%}
+            <div class="text-center item bg-img" data-overlay-dark="2" data-background="{{settings.image.url}}">
+                <div class="v-middle caption">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-10 offset-md-1 bg-main-with-transparent">
+                                <h4>{{slide.title}}</h4>
+                                <h1>{{slide.descriptions}}</h1>
+                                <h4>Цена: 50$</h4>
+                                <div class="butn-light mt-30 mb-30"> <a href="#"
+                                        data-scroll-nav="1"><span>Подробнее</span></a> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+>        <div class="reservation">
+            <a href="{{settings.phone}}">
+                <div class="icon d-flex justify-content-center align-items-center">
+                    <i class="flaticon-call"></i>
+                </div>
+                <div class="call"><span>{{settings.phone}}</span> <br>забронировать</div>
+            </a>
+        </div>
+    </header>
+    <!-- About -->
+    <section class="about section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mb-30 animate-box" data-animate-effect="fadeInUp">
+                    <div class="section-subtitle">{{settings.title}}</div>
+                    <div class="section-title">{{about.title}}</div>
+                    <p>{{about.descriptions}}</p>
+                    <!-- call -->
+                    <div class="reservations">
+                        <div class="icon"><span class="flaticon-call"></span></div>
+                        <div class="text">
+                            <p>Забронировать</p> <a href="tel:{{settings.phone}}">{{settings.phone}}</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-md-3 animate-box" data-animate-effect="fadeInUp">
+                    <img src="{{about.image_1.url}}" alt="" class="mt-90 mb-30 br-20">
+                </div>
+                <div class="col col-md-3 animate-box" data-animate-effect="fadeInUp">
+                    <img src="{{about.image_2.url}}" alt="" class="br-20">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Rooms -->
+
+    <section class="rooms1 section-padding bg-cream" data-scroll-index="1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-subtitle">{{settings.title}}</div>
+                    <div class="section-title">Новости</div>
+                </div>
+            </div>
+            <div class="row">
+                {% for news in news %}
+                <div class="col-md-4">
+                    <div class="item br-20">
+                        <div class="position-re o-hidden"><img src="{{news.image.url}}" alt=""></div>
+                        <div class="con">
+                            <h5><a href="#">{{news.title}}</a> </h5>
+                            <div class="line"></div>
+                            <div class="row facilities">
+                                <div class="col col-md-5 text-end">
+                                    <div class="permalink">
+                                        <a href="#">
+                                            Подробнее<i class="ti-arrow-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               {%endfor %}
+            </div>
+        </div>
+    </section>
+    <!-- Promo Video -->
+    {% if video.url %}
+    <section class="video-wrapper video section-padding bg-img bg-fixed" data-overlay-dark="3"
+        data-background="{{video.image.url}}">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 offset-md-2 text-center">
+                    <div class="section-subtitle"><span>{{settings.title}}</span></div>
+                    <div class="section-title"><span>{{video.title}}</span></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="text-center col-md-12">
+                    <a class="vid" href="{{video.url}}">
+                        <div class="vid-butn">
+                            <span class="icon">
+                                <i class="ti-control-play"></i>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    {% endif %}
+    <!-- Facilties -->
+    <section class="facilties pt-60">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-subtitle">{{settings.title}}</div>
+                    <div class="section-title">Услуги</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Services -->
+    <section class="services">
+        <div class="container">
+            {% for service in services%}
+            <div class="row">
+                <div class="col-md-6 p-0 animate-box" data-animate-effect="fadeInLeft">
+                    <div class="img left brl-20">
+                        <a href="#"><img src="{{service.image.url}}" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-md-6 p-0 bg-cream valign animate-box brr-20" data-animate-effect="fadeInRight">
+                    <div class="content">
+                        <div class="cont text-left">
+                            <h4>{{service.title}}</h4>
+                            <p>{{service.descriptions}}</p>
+                            <div class="butn-dark br-20"> <a href="#testimonials"><span>Заказать услугу</span></a> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor%}
+            
+    </section>
+    <!-- Boss -->
+    <section class="section-padding-boss">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-subtitle"><span>{settings.title}</span></div>
+                    <div class="section-title">Команда</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-md-6 animate-box" data-animate-effect="fadeInUp">
+                    <img src="{{founder.image.url}} " alt="" class="br-20">
+                </div>
+                <div class="col-md-6 mb-30 animate-box" data-animate-effect="fadeInUp">
+                    <div class="section-subtitle">{{founder.found}}</div>
+                    <div class="section-title">{{founder.name}}</div>
+                    <p>{{founder.descriptions}}</p>
+                    {%if founder.descriptions1%}
+                    <p>founder.descriptions1</p>
+                    {% endif %}
+                    {%if founder.descriptions2%}
+                    <p>founder.descriptions2</p>
+                    {% endif %}
+                    {%if founder.descriptions3%}
+                    <p>founder.descriptions3</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- News -->
+    <section class="news section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="owl-carousel owl-theme">
+                        {%for team in team %}
+                        <div class="item br-20">
+                            <div class="position-re o-hidden br-20"> 
+                                <img class="br-20" src="{{team..image.url}} " alt="">
+                            </div>
+                            <div class="con br-20">
+                                <h5><a href="post.html">{{team.name}}</a></h5>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Reservation & Booking Form -->
+    {% include "include/form.html" %}
+    <!-- Clients -->
+    <section class="clients">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="owl-carousel owl-theme">
+                        <div class="clients-logo">
+                            <a href="#0"><img src="{% static 'img/clients/1.png' %}" alt=""></a>
+                        </div>
+                        <div class="clients-logo">
+                            <a href="#0"><img src="{% static 'img/clients/2.png' %}" alt=""></a>
+                        </div>
+                        <div class="clients-logo">
+                            <a href="#0"><img src="{% static 'img/clients/3.png' %}" alt=""></a>
+                        </div>
+                        <div class="clients-logo">
+                            <a href="#0"><img src="{% static 'img/clients/4.png' %}" alt=""></a>
+                        </div>
+                        <div class="clients-logo">
+                            <a href="#0"><img src="{% static 'img/clients/5.png' %}" alt=""></a>
+                        </div>
+                        <div class="clients-logo">
+                            <a href="#0"><img src="{% static 'img/clients/6.png' %}" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    {% include "include/footer.html" %}
+    <!-- jQuery -->
+{% endblock %}
+
+</html>
